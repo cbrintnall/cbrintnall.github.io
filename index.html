@@ -8,73 +8,86 @@
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   </head>
   <body>
-  <section class="section">
-    <div class="container">
-      <div class="notification">
-        <h1 class="title"> Christian Brintnall </h1>
-        <div class="content">
-          <p>
-            Hello, my name is Christian. I enjoy writing in <strong>Python</strong> and <strong>Go</strong>. I have plenty of experience with other technologies that you can find below, such as <strong>Kubernetes</strong> and <strong>Kafka</strong>. My more abstract interests surround working with high throughput distributed systems. 
-          </p>
-          <div class="tile is-ancestor">
-            <div class="tile is-parent">
-              <article class="tile is-child notification has-background-primary has-text-white-ter">
-                <p class="title"> Languages </p>
-                <ol type="I">
-                  <li> Python </li>
-                  <li> Go </li>
-                  <li> Java </li>
-                  <li> C# </li>
-                  <li> SQL </li>
-                  <li> Rust </li>
-                </ol>
-              </article>
-            </div>
-            <div class="tile is-parent">
-              <article class="tile is-child notification is-success">
-                <p class="title"> Frameworks </p>
-                <ol type="I">
-                  <li> Flask </li>
-                  <li> Pytest </li>
-                  <li> Kubernetes Operator SDK </li>
-                  <li> Spring Boot </li>
-                  <li> Jest </li>
-                  <li> Asyncio </li>
-                  <li> React </li>
-                  <li> Express.js </li>
-                  <li> Mongoose </li>
-                  <li> Tox </li>
-                </ol>
-              </article>
-            </div>
-            <div class="tile is-parent">
-              <article class="tile is-child notification has-background-warning">
-                <p class="title"> Technologies </p>
-                <ol type="I">
-                  <li> Kubernetes </li>
-                  <li> Amazon Web Services (AWS) </li>
-                  <li> Google Cloud Platform (GCP) </li>
-                  <li> Datadog </li>
-                  <li> Statsd </li>
-                  <li> Docker </li>
-                  <li> Terraform </li>
-                  <li> Git </li>
-                  <li> Gitlab (& Gitlab CI / CD) </li>
-                  <li> Github (& Github actions) </li>
-                  <li> Kafka </li>
-                  <li> Redis </li>
-                  <li> Traefik </li>
-                  <li> WSGI </li>
-                  <li> New Relic </li>
-                  <li> Splunk </li>
-                  <li> Nginx </li>
-                </ol>
-              </article>
-            </div>
+  <div class="tabs">
+    <ul>
+      <li id="home-tab" class="is-active"><a onclick="onClickTab('home')">Home</a></li>
+      <li id="blog-tab"><a onclick="onClickTab('blog')">Blog</a></li>
+      <li id="projects-tab"><a onclick="onClickTab('projects')">Projects</a></li>
+    </ul>
+  </div>
+  <div class="page-content">
+    <section id='home-page' class="section">
+      <div class="container">
+        <div class="notification">
+          <h1 class="title"> Christian Brintnall </h1>
+          <p class="subtitle is-5"> <a href="https://github.com/cbrintnall"> github </a> </p>
+          <div class="content">
+            <p>
+              Hi! I enjoy programming (gamedev specifically 😃), running, cooking, and hanging out with my dog. Thanks for checking out my site.
+            </p>
+            <p id="projects"> My main project is <a href="https://shorter.recipes">shorter.recipes</a>, a website that makes reading recipes easier. Check it out.</p>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+    <section id='blog-page' class='is-hidden'>
+      Coming soon.
+    </section>
+    <section id='projects-page' class='is-hidden'>
+      Coming soon.
+    </section>
+  </div>
+  <script>
+    let lastTab = undefined;
+    let currentTab = 'home';
+
+    const tabData = {
+      home: {
+        id: 'home-page',
+      },
+      blog: {
+        id: 'blog-page',
+      },
+      projects: {
+        id: 'projects-page'
+      }
+    }
+
+    const onClickTab = (tab) => {
+      // Skip if current tab is selected.
+      if (tab === currentTab) {
+        return;
+      } else if (Object.keys(tabData).indexOf(tab) !== -1) {
+        changeToTab(tab);
+      }
+    }
+
+    const changeToTab = (tab) => {
+      if (lastTab && tabData[lastTab].onClose) {
+        data[lastTab].onClose();
+      }
+
+      if (tabData[tab].onOpen) {
+        tabData[tab].onOpen();
+      }
+
+      const oldEle = document.getElementById(tabData[currentTab].id);
+      const newEle = document.getElementById(tabData[tab].id);
+      const oldTab = document.getElementById(`${lastTab}-tab`);
+      const newTab = document.getElementById(`${tab}-tab`);
+
+      if (oldTab) {
+        oldTab.classList.remove('is-active');
+      }
+
+      newTab.classList.add('is-active');
+
+      oldEle.classList.add('is-hidden');
+      newEle.classList.remove('is-hidden');
+
+      lastTab = currentTab;
+      currentTab = tab;
+    }
+  </script>
   </body>
 </html>
