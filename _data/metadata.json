@@ -1,0 +1,35 @@
+{
+  "title": "Website.com",
+  "url": "https://cbrintnall.github.io/",
+  "language": "en",
+  "description": "A place where I store things about me.",
+  "feed": {
+    "subtitle": "I am writing about my experiences as a naval navel-gazer.",
+    "filename": "feed.xml",
+    "path": "/feed/feed.xml",
+    "id": "https://example.com/"
+  },
+  "jsonfeed": {
+    "path": "/feed/feed.json",
+    "url": "https://example.com/feed/feed.json"
+  },
+  "author": {
+    "name": "Christian Brintnall",
+    "email": "christianbrintnall@gmail.com",
+    "url": "https://cbrintnall.github.io/"
+  },
+  "nav": [
+    {
+      "title": "home",
+      "url": "/"
+    },
+    {
+      "title": "about",
+      "url": "/about"
+    }
+  ],
+  "config": {
+    "showDateList": true,
+    "showDatePost": true
+  }
+}
