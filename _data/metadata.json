@@ -1,5 +1,5 @@
 {
-  "title": "Website.com",
+  "title": "",
   "url": "https://cbrintnall.github.io/",
   "language": "en",
   "description": "A place where I store things about me.",
@@ -15,18 +15,10 @@
   },
   "author": {
     "name": "Christian Brintnall",
-    "email": "christianbrintnall@gmail.com",
+    "email": "",
     "url": "https://cbrintnall.github.io/"
   },
   "nav": [
-    {
-      "title": "home",
-      "url": "/"
-    },
-    {
-      "title": "about",
-      "url": "/about"
-    }
   ],
   "config": {
     "showDateList": true,
